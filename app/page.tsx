@@ -1,101 +1,113 @@
+'use client'
+
+import CarouselComponent from "@/components/carousel";
+import Footer from "@/components/footer";
+import Hero from "@/components/hero";
+import Nav from "@/components/nav";
+import { companyLogos } from "@/lib/constant";
 import Image from "next/image";
+import { useEffect } from "react";
+
+import {AiTwotoneThunderbolt} from 'react-icons/ai'
+import 'aos/dist/aos.css';  // Import AOS styles
+import AOS from 'aos';
+
 
 export default function Home() {
+    useEffect(() => {
+          AOS.init({
+            duration: 1000, // You can customize the duration here
+            once: false, // Whether animation should happen only once
+          });
+        }, []);
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
-              app/page.tsx
-            </code>
-            .
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
+    <div className="relative h-full">
+      <Hero/>
+      <Nav/>
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
-        </div>
-      </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+      <div className="container px-5 lg:px-[10rem] mx-auto py-8">
+          
+          <div className="mt-5 mb-5">
+            <p className="text-center text-md tracking-wider leading-5 text-gray-200 uppercase">trusted by beloved patners and customers</p>
+            <div className="mt-4" data-aos='fade-up'>
+              <div className="flex items-center justify-center space-x-8">
+              {companyLogos.map((item,index)=>(
+                <div key={index} className="flex items-center gap-x-2 my-2">
+                    <p className="text-md">{item.name}</p>
+                    <Image src={item.logoUrl} alt={item.name} height={40} width={40} />
+                </div>
+              ))}
+              </div>
+              <hr className="mt-5 mb-5 bg-gradient-to-tr from-mygray via-white to-mygray" />
+            </div>
+          </div>
+
+          <div className="mt-5 mb-5 py-3">
+            <div className="text-center" data-aos='fade-in'>
+              <p className="text-[55px] font-sans font-extrabold leading-none tracking-tight bg-gradient-to-r from-mygray via-white to-mygray bg-clip-text text-transparent">Powerful features just for <br /> you with (TEEs) </p>
+
+              <p className="font-mono mt-5 font-extrabold leading-normal tracking-tight bg-gradient-to-r from-mygray via-white to-mygray bg-clip-text text-transparent">Our platform offers a range of powerful features design to elavate your <br />  web3 experience using our Trusted Executional Environment</p>
+            </div>
+
+            <div className="mt-10 grid grid-cols-2 place-content-center justify-center gap-x-8">
+
+              <div className="w-full h-full flex flex-col gap-4 px-5">
+
+                <div className="relative w-full h-full bg-gradient-to-tr from-mybg  to-mynav bg-[length:100%_100%] bg-[0%_95%] px-5 py-3 rounded-xl border-[0.5px] border-mygray" data-aos='fade-down'>
+                  <div className="mt-4">
+                    <AiTwotoneThunderbolt size={40} className="text-yellow-800" />
+                  </div>
+                  <div className="absolute bottom-0">
+                  <p className="text-xl text-white">Deploy seemlessly with Fleek</p>
+                   <div className="py-3">
+                      <p>Build and deploy your app while using fleek with one touch configuration</p>
+                   </div>
+                   </div>
+                </div>
+
+                <div className="relative w-full h-full bg-gradient-to-tl from-mybg to-mynav bg-bg-[length:100%_100%] bg-[0%_95%] px-5 py-3 rounded-xl border-[0.5px] border-mygray" data-aos='fade-up'>
+                  <div className="mt-4">
+                    <Image src='/stream.webp' alt="stream" width={100} height={100} />
+                  </div>
+                  <div className="absolute bottom-0">
+                  <p className="text-xl text-white">Stream on fleek</p>
+                   <div className="py-3">
+                      <p>Go live effortlessly with Fleek's tool.</p>
+                   </div>
+                   </div>
+                </div>
+
+              </div>
+
+              <div className="px-5">
+
+                <div className="w-full bg-mybg shadow-md border-[0.4px] border-mygray px-5 py-4 rounded-2xl text-center" data-aos='fade-right'>
+                    <p className="text-3xl font-bold bg-gradient-to-r from-mygray via-white to-mygray bg-clip-text text-transparent">Transfer money <br /> to home</p>
+
+                    <p className="text-md px-5 mt-4 mb-2">send money back to your local account at the lowest market rate</p>
+
+                    <div className="px-4 py-4 grid place-content-center">
+                      <Image src='/country.png' alt="countries" width={250} height={150} />
+                    </div>
+                </div>
+
+              </div>
+
+            </div>
+
+          </div>
+
+
+          <div className="m-8 mb-8" data-aos='fade-up'>
+              <CarouselComponent/>
+          </div>
+
+      </div>
+
+
+      <Footer/>
+     
+
     </div>
   );
 }
